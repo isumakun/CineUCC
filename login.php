@@ -5,18 +5,18 @@ $link = conectar();
 if ((isset($_POST["usuario"]))
         && (isset($_POST["password"]))) {
 
-    $usuarios = mysql_query("Select * from cedula where cedula='{$_POST['usuario']}'", $link);
+    $usuarios = mysql_query("Select * from usuario where cedula='{$_POST['usuario']}'", $link);
     $nusuarios = mysql_num_rows($usuarios);
     
         
     if ($nusuarios != 0) {
         
-        $sql = "select password from cedula where cedula='{$_POST["usuario"]}'";
+        $sql = "select password from usuario where cedula='{$_POST["usuario"]}'";
 
         $result = mysql_query($sql, $link);
         $pass = mysql_result($result, 0);
         
-        $sql2 = "select tipo from cedula where cedula='{$_POST["usuario"]}'";
+        $sql2 = "select tipo from usuario where cedula='{$_POST["usuario"]}'";
         
         $result2 = mysql_query($sql2, $link);
         $tipouser = mysql_result($result2, 0);
@@ -33,7 +33,8 @@ if ((isset($_POST["usuario"]))
             header("Location: pagina_login.php?estado=malaclave");
         }
     }else {
-        header("Location: pagina_login.php?estado=nousuario");
+        echo $sql;
+        //header("Location: pagina_login.php?estado=nousuario");
     }
 }
 mysql_close($link);

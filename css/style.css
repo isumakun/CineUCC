@@ -106,5 +106,28 @@ h1#logo a { float:left; width:239px; height:49px; background:url('images/logocin
 
 #footer a:hover.designby { color:#9c9c9c; text-decoration:none; }
 
+.botoncool {
+    background-color: #1b1e24;
+    border:1px solid #4c6478;
+    display:inline-block;
+    color:#ffffff;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    font-style:normal;
+    height:40px;
+    line-height:40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 0px #696869;
+}
+.botoncool:hover {
+    background-color: #4c6478;
+}.botoncool:active {
+    position:relative;
+    top:1px;
 
+}
 

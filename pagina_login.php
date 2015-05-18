@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="css/login-style.css">
     </head>
     <?php
-    session_start();
+    require './funciones.php';
 
     if (isset($_GET['estado'])) {
         if ($_GET['estado'] == 'logout') {
@@ -21,7 +21,7 @@
     }
 
     if (isset($_SESSION['estado'])) {
-        if($_SESSION('estado')=='autenticado'){
+    if($_SESSION['estado']=='autenticado'){
             header('Location: home.php');
         }
     }

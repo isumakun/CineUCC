@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require './funciones.php'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
     <head>
@@ -16,7 +16,7 @@
         <div id="shell">
             <!-- Header -->
             <div id="header">
-                <h1 id="logo"><a href="#">Cine UCC</a></h1>
+                <h1 id="logo"><a href="home.php">Cine UCC</a></h1>
                 <div class="social">
                     <span>FOLLOW US ON:</span>
                     <ul>
