@@ -4,7 +4,7 @@ require 'funciones.php';
 
 $link = conectar();
 
-if (isset($_POST['cedula'])) {
+if (isset($_POST['cedulaid'])) {
 
     if ((isset($_POST["nombre"])) && (isset($_POST["apellido"])) && (isset($_POST["telefono"])) && (isset($_POST["password"]))) {
 
@@ -20,6 +20,7 @@ if (isset($_POST['cedula'])) {
         $error = mysql_error($link);
 
         if ($error == null) {
+            echo $sql;
             header("Location: registro.php?estado=guardado");
         } else {
             //header("Location: registro.php?estado=errordatos");
@@ -52,6 +53,7 @@ if (isset($_POST['cedula'])) {
         $error = mysql_error($link);
 
         if ($error == null) {
+            echo $sql;
             header("Location: registro.php?estado=guardado");
         } else {
             //header("Location: registro.php?estado=errordatos");

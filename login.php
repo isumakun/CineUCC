@@ -34,7 +34,7 @@ if ((isset($_POST["usuario"]))
         }
     }else {
         echo $sql;
-        //header("Location: pagina_login.php?estado=nousuario");
+        header("Location: pagina_login.php?estado=nousuario");
     }
 }
 mysql_close($link);

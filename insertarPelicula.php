@@ -4,7 +4,7 @@ require 'funciones.php';
 
 $link = conectar();
 
-if (isset($_POST['idSala'])) {
+if (isset($_POST['idPelicula'])) {
 
     if ((isset($_POST["nombre"])) && (isset($_POST["imagen"])) && (isset($_POST["idSala"]))) {
 
@@ -20,7 +20,7 @@ if (isset($_POST['idSala'])) {
             $error = mysql_error($link);
 
             if ($error == null) {
-                header("Location: peliculas.php");
+                //header("Location: peliculas.php");
             } else {
                 //header("Location: registroPelicula.php?estado=errordatos");
                 echo $sql;
@@ -50,6 +50,7 @@ if (isset($_POST['idSala'])) {
             $error = mysql_error($link);
 
             if ($error == null) {
+                echo $sql;
                 header("Location: peliculas.php");
             } else {
                 //header("Location: registroPelicula.php?estado=errordatos");
