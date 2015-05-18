@@ -39,25 +39,12 @@ if (isset($_POST['idSala'])) {
                         '{$_POST["numero_sillas"]}')";
 
         mysql_query($sql, $link);
-        $id = mysql_insert_id;
-
-        for ($i = 0; $i < $_POST["numero_sillas"]; $i++) {
-            for ($j = 0; $j < $_POST["numero_sillas"]; $j++) {
-                $sql2 = "INSERT INTO `sillas`
-                        (`fila`,
-                         `sala_idsala`)
-                            VALUES (
-                                    '$j',
-                                    '$id');";
-                mysql_query($sql2, $link);
-            }
-        }
-
-
-
+        $id = mysql_insert_id($link);
+        
         $error = mysql_error($link);
 
         if ($error == null) {
+            echo $id;
             header("Location: salas.php");
         } else {
             //header("Location: registroSala.php?estado=errordatos");
