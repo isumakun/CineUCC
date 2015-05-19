@@ -100,6 +100,7 @@
                                     <th class="text-left">idSala</th>
                                     <th class="text-left">Numero Filas</th>
                                     <th class="text-left">Numero Sillas</th>
+                                    <th class="text-left">Pelicula</th>
                                     <th colspan="3"></th>
                                 </tr>
                             </thead>
