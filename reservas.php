@@ -97,14 +97,18 @@
                         <table class="table-fill" style="margin-bottom: 20px">
                             <thead>
                                 <tr>
-                                    <th class="text-left">idPelicula</th>
-                                    <th class="text-left">Nombre</th>
-                                    <th class="text-left">Sala</th>
-                                    <th colspan="2"></th>
+                                    <th class="text-left">idReserva</th>
+                                    <th class="text-left">Fecha</th>
+                                    <th class="text-left">Pelicula</th>
+                                    <th class="text-left">Cliente</th>
+                                    <th class="text-left">Operario</th>
+                                    <th class="text-left">Ticketes</th>
+                                    <th class="text-left">Total</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody class="table-hover">
-                                <?php require './tablaPeliculas.php'; ?>
+                                <?php require './tablaReservas.php'; ?>
                             </tbody>
                         </table>
                     </center>
