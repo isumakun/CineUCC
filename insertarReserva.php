@@ -1,8 +1,51 @@
 <?php
+require_once 'funciones.php';
+$link = conectar();
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+if (
+isset($_POST['idPelicula'])
+&& isset($_POST['cedula_usuario'])
+&& isset($_POST['numero_ticketes'])) {
 
+$sql = "INSERT INTO `reserva`
+            (
+             `idPelicula`,
+             `cedula_usuario`)
+                VALUES (
+                '{$_POST['idPelicula']}',
+                '{$_POST['cedula_usuario']}')";
+
+                mysql_query($sql, $link);
+                $id = mysql_insert_id($link);
+                
+                for ($i=0; $i < $_POST['numero_ticketes']; $i++) { 
+                    $sql2 = "INSERT INTO `ticket`
+                                    (
+                                     `idReserva`)
+                        VALUES (
+                                '$id')";
+                    
+                    mysql_query($sql2, $link);
+                }
+                
+                $error = mysql_error($link);
+
+                if ($error == null) {
+                    echo $id;
+                    echo $_POST['numero_ticketes'];
+                    header("Location: reservas.php");
+                } else {
+                    echo $sql;
+                    echo '----------------';
+                    echo $sql2;
+                     echo 'errorMysql ';
+                     echo $error;
+                }
+                     mysql_close($link);
+                } else {
+                    echo $sql;
+                    echo '----------------';
+                    echo $sql2;
+                     echo 'datos';
+}
+?>

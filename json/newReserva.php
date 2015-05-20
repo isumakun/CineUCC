@@ -2,36 +2,36 @@
 require_once '../funciones.php';
 $link = conectar();
 
-if (isset($_POST['idReserva'])
-&& isset($_POST['idPelicula'])
+if (
+isset($_POST['idPelicula'])
 && isset($_POST['cedula_usuario'])
-&& isset($_POST['num_tickets'])) {
+&& isset($_POST['numero_ticketes'])) {
 
 $sql = "INSERT INTO `reserva`
             (
-             `idReserva`,
              `idPelicula`,
              `cedula_usuario`)
                 VALUES (
-                '{$_POST['idReserva']}',
                 '{$_POST['idPelicula']}',
-                '{$_POST['cedula_usuario']}'";
+                '{$_POST['cedula_usuario']}')";
 
                 mysql_query($sql, $link);
                 $id = mysql_insert_id($link);
-
-                for ($i=0; $i < $_POST['num_tickets']; $i++) { 
+                
+                for ($i=0; $i < $_POST['numero_ticketes']; $i++) { 
                     $sql2 = "INSERT INTO `ticket`
                                     (
                                      `idReserva`)
                         VALUES (
-                                '{$_POST['idReserva']}')";
+                                '$id')";
+                    
+                    mysql_query($sql2, $link);
                 }
                 
                 $error = mysql_error($link);
 
                 if ($error == null) {
-                     echo $id;
+                     echo 'ok';
                 } else {
                      echo 'errorMysql ';
                      echo $error;

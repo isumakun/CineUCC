@@ -98,13 +98,10 @@
                             <thead>
                                 <tr>
                                     <th class="text-left">idReserva</th>
-                                    <th class="text-left">Fecha</th>
                                     <th class="text-left">Pelicula</th>
                                     <th class="text-left">Cliente</th>
-                                    <th class="text-left">Operario</th>
                                     <th class="text-left">Ticketes</th>
                                     <th class="text-left">Total</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody class="table-hover">

@@ -13,6 +13,7 @@
             unset($_SESSION['tipo']);
             unset($_SESSION['estado']);
             unset($_SESSION['usuario']);
+            header('Location: home.php');
         } elseif ($_GET['estado'] == "nousuario") {
             echo '<script> alert("El usuario no existe") </script>';
         } elseif ($_GET['estado'] == "malclave") {
