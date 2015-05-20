@@ -7,3 +7,11 @@ class pelicula {
     public $imagen;
     public $idSala;
 }
+
+class usuario {
+
+    public $cedula;
+    public $nombre;
+    public $password;
+}
+
