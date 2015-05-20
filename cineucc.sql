@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2015 a las 23:56:58
+-- Tiempo de generación: 20-05-2015 a las 08:44:50
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -31,14 +31,16 @@ CREATE TABLE IF NOT EXISTS `pelicula` (
   `nombre` varchar(250) NOT NULL,
   `imagen` varchar(250) NOT NULL,
   `idSala` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `pelicula`
 --
 
 INSERT INTO `pelicula` (`idPelicula`, `nombre`, `imagen`, `idSala`) VALUES
-(1, 'Vengadores 2', '', 1);
+(1, 'Vengadores 2', 'http://t0.gstatic.com/images?q=tbn:ANd9GcRlGeugacRkKznDOtRhUCVt0AkrOTPbaaKwF9xgGZgNViyC_Xko', 1),
+(2, 'MadMax', 'http://cdn.wegotthiscovered.com/wp-content/uploads/Mad.jpg', 2),
+(3, 'Dragon Ball Z: La resurreciÃ³n de Freezer', 'http://www.dragonball2015.com/common/images/main.jpg', 3);
 
 -- --------------------------------------------------------
 
@@ -48,11 +50,17 @@ INSERT INTO `pelicula` (`idPelicula`, `nombre`, `imagen`, `idSala`) VALUES
 
 CREATE TABLE IF NOT EXISTS `reserva` (
 `idReserva` int(11) NOT NULL,
-  `fecha` varchar(45) NOT NULL,
   `idPelicula` int(11) NOT NULL,
-  `cedula_usuario` int(11) NOT NULL,
-  `cedula_operario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `cedula_usuario` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`idReserva`, `idPelicula`, `cedula_usuario`) VALUES
+(3, 3, 12622023),
+(5, 1, 12622023);
 
 -- --------------------------------------------------------
 
@@ -95,9 +103,35 @@ CREATE TABLE IF NOT EXISTS `sillas` (
 --
 
 CREATE TABLE IF NOT EXISTS `ticket` (
-  `idticket` int(11) NOT NULL,
-  `precio` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+`idTicket` int(11) NOT NULL,
+  `idReserva` int(11) NOT NULL,
+  `precio` double NOT NULL DEFAULT '10000'
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ticket`
+--
+
+INSERT INTO `ticket` (`idTicket`, `idReserva`, `precio`) VALUES
+(1, 3, 10000),
+(2, 3, 10000),
+(3, 3, 10000),
+(4, 3, 10000),
+(5, 3, 10000),
+(30, 4, 10000),
+(31, 4, 10000),
+(32, 4, 10000),
+(33, 4, 10000),
+(34, 4, 10000),
+(35, 4, 10000),
+(36, 4, 10000),
+(37, 4, 10000),
+(38, 5, 10000),
+(39, 5, 10000),
+(40, 5, 10000),
+(41, 5, 10000),
+(42, 5, 10000),
+(43, 5, 10000);
 
 -- --------------------------------------------------------
 
@@ -120,6 +154,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`cedula`, `nombre`, `apellido`, `telefono`, `password`, `tipo`) VALUES
 (100100, 'John', 'Doe', '4555555', '1234', 'admin'),
+(12345678, 'Ana', 'Alvarez', '4223435', '1234', 'cliente'),
+(12622023, 'zed', 'shen', '4220096', '1234', 'cliente'),
 (324559696, 'Kakaroto', 'Mondo', '4220808', '1234', 'cliente');
 
 -- --------------------------------------------------------
@@ -166,7 +202,7 @@ ALTER TABLE `sillas`
 -- Indices de la tabla `ticket`
 --
 ALTER TABLE `ticket`
- ADD PRIMARY KEY (`idticket`);
+ ADD PRIMARY KEY (`idTicket`);
 
 --
 -- Indices de la tabla `usuario`
@@ -188,12 +224,12 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-MODIFY `idPelicula` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `idPelicula` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `sala`
 --
@@ -204,6 +240,11 @@ MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 ALTER TABLE `sillas`
 MODIFY `idSilla` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `ticket`
+--
+ALTER TABLE `ticket`
+MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
